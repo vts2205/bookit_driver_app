@@ -16,11 +16,13 @@ class LoginScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(height: 50),
                 Container(
                   width: 250,
-                  height: 200,
-                  child: Image.asset('assets/logo/driverlogo.png'),
+                  height: 250,
+                  child: Image.asset(
+                    'assets/logo/bookitlogo.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
                 const SizedBox(height: 30),
                 Text('Login To Start Your Ride',

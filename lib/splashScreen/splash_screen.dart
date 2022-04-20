@@ -55,20 +55,26 @@ class _MySplashScreenState extends State<MySplashScreen> {
                 height: 10,
               ),
               Column(
-                children: const [
+                children: [
                   Text(
                     "WELCOME",
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: green),
                   ),
                   SizedBox(height: 20),
                   Text(
                     "TO",
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: green),
                   ),
                   SizedBox(height: 20),
-                  Text(
-                    "BOOKIT",
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  Image.asset(
+                    "assets/logo/bookit.png",
+                    width: 250,
                   ),
                 ],
               ),
