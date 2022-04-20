@@ -19,27 +19,27 @@ class WalletScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 30),
             const Text('RS 1000',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900)),
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w900)),
             const SizedBox(height: 30),
             Row(
               children: [
                 CircleAvatar(
-                    radius: 30,
+                    radius: 25,
                     backgroundColor: blue.withOpacity(0.2),
                     child: Icon(Icons.account_balance_wallet,
-                        size: 30, color: blue)),
+                        size: 25, color: blue)),
                 const Spacer(),
-                const Text('Captain Wallet', style: TextStyle(fontSize: 20)),
+                const Text('Captain Wallet', style: TextStyle(fontSize: 18)),
                 const Spacer(flex: 6),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      primary: blue, padding: const EdgeInsets.all(15)),
+                      primary: blue, padding: const EdgeInsets.all(10)),
                   onPressed: () {
                     Get.to(const AddMoneyScreen());
                   },
                   child: const Text(
                     'Add Money',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 )
               ],

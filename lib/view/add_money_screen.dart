@@ -49,6 +49,7 @@ class AddMoneyScreen extends StatelessWidget {
     return TextField(
       cursorColor: Colors.black54,
       decoration: InputDecoration(
+          contentPadding: EdgeInsets.all(10),
           border: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.black),
               borderRadius: BorderRadius.circular(5)),
@@ -56,16 +57,16 @@ class AddMoneyScreen extends StatelessWidget {
               borderSide: const BorderSide(color: Colors.black),
               borderRadius: BorderRadius.circular(5)),
           hintText: 'Enter your amount',
-          hintStyle: const TextStyle(fontSize: 20)),
+          hintStyle: const TextStyle(fontSize: 18)),
     );
   }
 
   buildAddMoneyButton() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          primary: blue, padding: const EdgeInsets.all(15)),
+          primary: blue, padding: const EdgeInsets.all(10)),
       onPressed: () {
-        /// razorpay screen
+        /// ippopay screen
         // Get.to();
       },
       child: const Text(

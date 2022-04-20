@@ -26,18 +26,18 @@ class NotificationScreen extends StatelessWidget {
       title: Text(
         "Notification",
         style:
-            TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: blue),
+            TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: blue),
       ),
       centerTitle: true,
       bottom: TabBar(
           labelColor: blue,
           labelStyle:
-              const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
           indicatorColor: green,
           indicatorWeight: 5,
           unselectedLabelColor: Colors.black54,
           unselectedLabelStyle:
-              const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           tabs: const [
             Tab(text: 'All'),
             Tab(text: 'Trip Info'),

@@ -21,7 +21,7 @@ class MenuItem extends StatelessWidget {
       leading: Icon(
         icon,
         color: Colors.black54,
-        size: 35,
+        size: 30,
       ),
       title: Text(
         title,

@@ -115,6 +115,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: buildAppBar(),
       drawer: const DrawerWidget(),
+      extendBodyBehindAppBar: true,
       body: Stack(
         children: [
           GoogleMap(
@@ -215,7 +216,7 @@ class _MainScreenState extends State<MainScreen> {
       title: Text(''),
       centerTitle: true,
       backgroundColor: Colors.transparent,
-      iconTheme: const IconThemeData(color: Colors.black),
+      //iconTheme: const IconThemeData(color: Colors.black),
       elevation: 0,
       actions: [
         Padding(
@@ -234,7 +235,7 @@ class _MainScreenState extends State<MainScreen> {
               icon: const Icon(
                 Icons.notification_important_outlined,
                 size: 30,
-                color: Colors.black,
+                color: Colors.white,
               ),
               onPressed: () {
                 Get.to(const NotificationScreen());

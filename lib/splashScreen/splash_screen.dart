@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bookit_driver_app/constants/colors.dart';
 import 'package:bookit_driver_app/global/global.dart';
 import 'package:bookit_driver_app/mainScreens/main_screen.dart';
 import 'package:bookit_driver_app/view/login_screen.dart';
@@ -37,21 +38,39 @@ class _MySplashScreenState extends State<MySplashScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        color: Colors.black,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [blue.withOpacity(0.4), green.withOpacity(0.4)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight)),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("images/logo1.png"),
+              Image.asset(
+                "assets/logo/logo.png",
+                width: 250,
+              ),
               const SizedBox(
                 height: 10,
               ),
-              const Text(
-                "Uber & inDriver Clone App",
-                style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold),
+              Column(
+                children: const [
+                  Text(
+                    "WELCOME",
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "TO",
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "BOOKIT",
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
             ],
           ),

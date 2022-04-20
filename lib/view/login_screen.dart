@@ -18,21 +18,22 @@ class LoginScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 50),
                 Container(
-                  width: 400,
+                  width: 250,
                   height: 200,
                   child: Image.asset('assets/logo/driverlogo.png'),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 Text('Login To Start Your Ride',
                     style: TextStyle(
                         fontSize: 25,
                         color: green,
                         fontWeight: FontWeight.bold)),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 TextField(
                   keyboardType: TextInputType.number,
                   cursorColor: green,
                   decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.all(10),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -43,13 +44,14 @@ class LoginScreen extends StatelessWidget {
                     hintText: 'Enter Your Phone Number',
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 const Divider(thickness: 2),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 TextField(
                   keyboardType: TextInputType.number,
                   cursorColor: green,
                   decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.all(10),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -60,25 +62,25 @@ class LoginScreen extends StatelessWidget {
                     hintText: 'Enter Referral Code',
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 const Divider(thickness: 2),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 PinCodeTextField(
                   autofocus: true,
                   highlight: true,
                   highlightColor: green,
                   defaultBorderColor: Colors.black,
                   maxLength: 4,
-                  pinBoxWidth: 60,
-                  pinBoxHeight: 60,
+                  pinBoxWidth: 40,
+                  pinBoxHeight: 50,
                   hasUnderline: true,
                   wrapAlignment: WrapAlignment.spaceAround,
                   pinBoxDecoration:
                       ProvidedPinBoxDecoration.defaultPinBoxDecoration,
-                  pinBoxRadius: 10,
+                  pinBoxRadius: 5,
                   pinTextStyle: const TextStyle(fontSize: 22.0),
                 ),
-                const SizedBox(height: 50),
+                const SizedBox(height: 30),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: blue),
                     onPressed: () {
@@ -86,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                     },
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 60,
+                      height: 50,
                       child: const Center(
                         child: Text(
                           'Login',

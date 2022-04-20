@@ -1,7 +1,6 @@
 import 'package:bookit_driver_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-
 class AppbarWidget extends StatelessWidget with PreferredSizeWidget {
   final String title;
   const AppbarWidget({Key? key, required this.title}) : super(key: key);
@@ -15,7 +14,7 @@ class AppbarWidget extends StatelessWidget with PreferredSizeWidget {
       title: Text(
         title,
         style:
-            TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: blue),
+            TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: blue),
       ),
       centerTitle: true,
     );

@@ -22,7 +22,7 @@ class ReportsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 5, bottom: 5),
                 child: ListTile(
                   title: const Text('Login Summary',
-                      style: TextStyle(fontSize: 22)),
+                      style: TextStyle(fontSize: 18)),
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
                     Get.to(const LoginSummaryScreen());
@@ -35,7 +35,7 @@ class ReportsScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 5, bottom: 5),
                 child: ListTile(
                   title: const Text('Total Hours Summary',
-                      style: TextStyle(fontSize: 22)),
+                      style: TextStyle(fontSize: 18)),
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
                     Get.to(const TotalHoursSummaryScreen());

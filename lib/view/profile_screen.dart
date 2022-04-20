@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends StatefulWidget {
-  ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -29,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: ListView(
         children: [
           const CircleAvatar(
-            radius: 70,
+            radius: 60,
             backgroundColor: Colors.blueGrey,
           ),
           const SizedBox(height: 20),
@@ -37,24 +37,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: const [
               Text(
                 'ID Number :',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(width: 10),
               Text(
                 'ABCD1234',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
           ),
           const SizedBox(height: 20),
           const Text(
             'Name',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 18),
           ),
           const SizedBox(height: 5),
           TextField(
             cursorColor: green,
             decoration: InputDecoration(
+                contentPadding: const EdgeInsets.all(10),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),
@@ -65,12 +66,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
           const SizedBox(height: 20),
           const Text(
             'Phone Number',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 18),
           ),
           const SizedBox(height: 5),
           TextField(
             cursorColor: green,
             decoration: InputDecoration(
+                contentPadding: const EdgeInsets.all(10),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),
@@ -81,12 +83,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
           const SizedBox(height: 20),
           const Text(
             'Other Phone Number (optional)',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 18),
           ),
           const SizedBox(height: 5),
           TextField(
             cursorColor: green,
             decoration: InputDecoration(
+                contentPadding: const EdgeInsets.all(10),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5),
                 ),
@@ -100,7 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               const Text(
                 'Language : ',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 18),
               ),
               Row(
                 children: [
@@ -114,11 +117,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: const [
               Text(
                 'Licence Number : ',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 18),
               ),
               Text(
                 'TN99AB12345678910',
-                style: TextStyle(fontSize: 20, color: Colors.black54),
+                style: TextStyle(fontSize: 18, color: Colors.black54),
               ),
             ],
           ),
@@ -127,24 +130,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: const [
               Text(
                 'Expiry Date : ',
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 18),
               ),
               Text(
                 '31/05/2045',
-                style: TextStyle(fontSize: 20, color: Colors.black54),
+                style: TextStyle(fontSize: 18, color: Colors.black54),
               ),
             ],
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 20),
+          Row(
+            children: const [
+              Text(
+                'Referral Code : ',
+                style: TextStyle(fontSize: 18),
+              ),
+              Text(
+                'ABCD1234',
+                style: TextStyle(fontSize: 18, color: Colors.black54),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Row(
+            children: const [
+              Text(
+                'Referred Drivers : ',
+                style: TextStyle(fontSize: 18),
+              ),
+              Text(
+                '3',
+                style: TextStyle(fontSize: 18, color: Colors.black54),
+              ),
+            ],
+          ),
+          const SizedBox(height: 30),
           ElevatedButton(
               onPressed: () {
                 Get.off(MainScreen());
               },
               style: ElevatedButton.styleFrom(
-                  primary: green, padding: const EdgeInsets.all(15)),
+                  primary: green, padding: const EdgeInsets.all(10)),
               child: const Text(
                 "Update",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ))
         ],
       ),
@@ -155,15 +184,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
       {required LanguageModel language, required VoidCallback onClicked}) {
     return Expanded(
       child: ListTile(
+          contentPadding: const EdgeInsets.all(5),
           leading: Checkbox(
               activeColor: blue,
               value: language.value,
               onChanged: (value) => onClicked()),
           title: Text(
             language.title,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 15),
           ),
-          horizontalTitleGap: 3,
+          horizontalTitleGap: 1,
           onTap: onClicked),
     );
   }

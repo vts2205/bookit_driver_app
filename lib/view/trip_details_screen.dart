@@ -18,7 +18,7 @@ class TripDetailsScreen extends StatelessWidget {
           child: ListView(
             children: [
               const Text('Daily Trips',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
@@ -29,10 +29,10 @@ class TripDetailsScreen extends StatelessWidget {
                     title: Padding(
                       padding: const EdgeInsets.only(bottom: 5),
                       child: Text('7 April 2022',
-                          style: TextStyle(fontSize: 20, color: green)),
+                          style: TextStyle(fontSize: 18, color: green)),
                     ),
                     subtitle: const Text('3 trips',
-                        style: TextStyle(fontSize: 20, color: Colors.black54)),
+                        style: TextStyle(fontSize: 18, color: Colors.black54)),
                     trailing: const Icon(Icons.arrow_forward_ios,
                         color: Colors.black),
                   ),

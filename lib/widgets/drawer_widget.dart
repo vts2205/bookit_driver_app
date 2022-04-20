@@ -17,16 +17,16 @@ class DrawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.75,
+      width: MediaQuery.of(context).size.width * 0.80,
       child: Drawer(
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               Container(
-                height: 30,
+                height: 20,
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
                   Get.to(ProfileScreen());
@@ -34,26 +34,27 @@ class DrawerWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     const CircleAvatar(
-                      radius: 35,
+                      radius: 30,
                     ),
                     const SizedBox(width: 10),
                     Column(
                       children: const [
                         Text(
                           "name",
-                          style: TextStyle(fontSize: 25),
+                          style: TextStyle(fontSize: 20),
                         ),
                         Text(
                           "number",
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 17),
                         ),
                       ],
                     ),
                   ],
                 ),
               ),
+              const SizedBox(height: 10),
               const Divider(),
-              const SizedBox(height: 30),
+              const SizedBox(height: 10),
               MenuItem(
                   title: 'Dashboard',
                   icon: Icons.analytics_outlined,
@@ -61,7 +62,7 @@ class DrawerWidget extends StatelessWidget {
                     Get.to(MainScreen());
                   },
                   color: Colors.black,
-                  size: 20),
+                  size: 18),
               MenuItem(
                   title: 'Trip Details',
                   icon: Icons.drive_eta_outlined,
@@ -69,7 +70,7 @@ class DrawerWidget extends StatelessWidget {
                     Get.to(const TripDetailsScreen());
                   },
                   color: Colors.black,
-                  size: 20),
+                  size: 18),
               MenuItem(
                   title: 'Notification',
                   icon: Icons.notification_important_outlined,
@@ -77,7 +78,7 @@ class DrawerWidget extends StatelessWidget {
                     Get.to(const NotificationScreen());
                   },
                   color: Colors.black,
-                  size: 20),
+                  size: 18),
               MenuItem(
                   title: 'Reports',
                   icon: Icons.assignment_outlined,
@@ -85,7 +86,7 @@ class DrawerWidget extends StatelessWidget {
                     Get.to(const ReportsScreen());
                   },
                   color: Colors.black,
-                  size: 20),
+                  size: 18),
               MenuItem(
                   title: 'Wallet',
                   icon: Icons.account_balance_wallet_outlined,
@@ -93,7 +94,7 @@ class DrawerWidget extends StatelessWidget {
                     Get.to(const WalletScreen());
                   },
                   color: Colors.black,
-                  size: 20),
+                  size: 18),
               MenuItem(
                   title: 'Transaction History',
                   icon: Icons.history,
@@ -101,7 +102,7 @@ class DrawerWidget extends StatelessWidget {
                     Get.to(const TransactionHistoryScreen());
                   },
                   color: Colors.black,
-                  size: 20),
+                  size: 18),
               MenuItem(
                   title: 'Terms and Conditions',
                   icon: Icons.description,
@@ -109,7 +110,7 @@ class DrawerWidget extends StatelessWidget {
                     Get.to(const TermsAndConditionsScreen());
                   },
                   color: Colors.black,
-                  size: 20),
+                  size: 18),
               MenuItem(
                   title: 'Logout',
                   icon: Icons.logout,
@@ -117,7 +118,7 @@ class DrawerWidget extends StatelessWidget {
                     Get.offAll(const LoginScreen());
                   },
                   color: Colors.black,
-                  size: 20),
+                  size: 18),
             ],
           ),
         ),

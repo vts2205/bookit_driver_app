@@ -44,7 +44,7 @@ class _TotalHoursSummaryScreenState extends State<TotalHoursSummaryScreen> {
     final minutes = _dateTime.minute.toString().padLeft(2, '0');
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 60,
+      height: 50,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5), color: blue.withOpacity(0.2)),
       child: Row(
@@ -54,7 +54,7 @@ class _TotalHoursSummaryScreenState extends State<TotalHoursSummaryScreen> {
             padding: EdgeInsets.only(left: 10),
             child: Text(
               'From Date',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 18),
             ),
           ),
           TextButton(
@@ -63,7 +63,7 @@ class _TotalHoursSummaryScreenState extends State<TotalHoursSummaryScreen> {
               },
               child: Text(
                 '${_dateTime.day}/${_dateTime.month}/${_dateTime.year} $hours:$minutes',
-                style: TextStyle(fontSize: 20, color: blue),
+                style: TextStyle(fontSize: 18, color: blue),
               ))
         ],
       ),
@@ -75,7 +75,7 @@ class _TotalHoursSummaryScreenState extends State<TotalHoursSummaryScreen> {
     final minutes = _dateTime.minute.toString().padLeft(2, '0');
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 60,
+      height: 50,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5), color: blue.withOpacity(0.2)),
       child: Row(
@@ -85,7 +85,7 @@ class _TotalHoursSummaryScreenState extends State<TotalHoursSummaryScreen> {
             padding: EdgeInsets.only(left: 10),
             child: Text(
               'To Date',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 18),
             ),
           ),
           TextButton(
@@ -94,7 +94,7 @@ class _TotalHoursSummaryScreenState extends State<TotalHoursSummaryScreen> {
               },
               child: Text(
                 '${_dateTime.day}/${_dateTime.month}/${_dateTime.year} $hours:$minutes',
-                style: TextStyle(fontSize: 20, color: blue),
+                style: TextStyle(fontSize: 18, color: blue),
               ))
         ],
       ),
@@ -130,8 +130,8 @@ class _TotalHoursSummaryScreenState extends State<TotalHoursSummaryScreen> {
   buildTotalWorkingHours() {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 60,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      height: 50,
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5), color: blue.withOpacity(0.2)),
       child: Row(
@@ -139,11 +139,11 @@ class _TotalHoursSummaryScreenState extends State<TotalHoursSummaryScreen> {
         children: const [
           Text(
             'Total Working Hours :',
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 18),
           ),
           Text(
             '48 hours 28 mins',
-            style: TextStyle(fontSize: 20, color: Colors.black54),
+            style: TextStyle(fontSize: 18, color: Colors.black54),
           ),
         ],
       ),
@@ -160,10 +160,10 @@ class _TotalHoursSummaryScreenState extends State<TotalHoursSummaryScreen> {
         },
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: 60,
+          height: 50,
           child: const Center(
             child: Text('Submit',
-                style: TextStyle(fontSize: 25, color: Colors.white)),
+                style: TextStyle(fontSize: 20, color: Colors.white)),
           ),
         ));
   }

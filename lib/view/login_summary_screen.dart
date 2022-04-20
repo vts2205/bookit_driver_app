@@ -1,7 +1,6 @@
 import 'package:bookit_driver_app/widgets/appbar_widget.dart';
 import 'package:flutter/material.dart';
 
-
 class LoginSummaryScreen extends StatelessWidget {
   const LoginSummaryScreen({Key? key}) : super(key: key);
 
@@ -16,19 +15,19 @@ class LoginSummaryScreen extends StatelessWidget {
             children: [
               Row(
                 children: const [
-                  Text('Driver ID :', style: TextStyle(fontSize: 22)),
+                  Text('Driver ID :', style: TextStyle(fontSize: 20)),
                   SizedBox(width: 5),
                   Text('ABCD1234',
-                      style: TextStyle(fontSize: 20, color: Colors.black54)),
+                      style: TextStyle(fontSize: 18, color: Colors.black54)),
                 ],
               ),
               const SizedBox(height: 10),
               Row(
                 children: const [
-                  Text('Driver Name :', style: TextStyle(fontSize: 22)),
+                  Text('Driver Name :', style: TextStyle(fontSize: 20)),
                   SizedBox(width: 5),
                   Text('Xyz',
-                      style: TextStyle(fontSize: 20, color: Colors.black54)),
+                      style: TextStyle(fontSize: 18, color: Colors.black54)),
                 ],
               ),
               const SizedBox(
@@ -42,11 +41,11 @@ class LoginSummaryScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
-                          Text('Login Time :', style: TextStyle(fontSize: 22)),
+                          Text('Login Time :', style: TextStyle(fontSize: 18)),
                           SizedBox(width: 5),
                           Text('09:00 AM',
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.black54)),
+                                  fontSize: 18, color: Colors.black54)),
                         ],
                       ),
                       const SizedBox(
@@ -55,11 +54,11 @@ class LoginSummaryScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
-                          Text('Logout Time :', style: TextStyle(fontSize: 22)),
+                          Text('Logout Time :', style: TextStyle(fontSize: 18)),
                           SizedBox(width: 5),
                           Text('09:00 PM',
                               style: TextStyle(
-                                  fontSize: 20, color: Colors.black54)),
+                                  fontSize: 18, color: Colors.black54)),
                         ],
                       ),
                     ],
@@ -78,22 +77,22 @@ class LoginSummaryScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
                         Text('Login Location :',
-                            style: TextStyle(fontSize: 22)),
+                            style: TextStyle(fontSize: 18)),
                         SizedBox(height: 5),
                         Text('Login Address',
                             maxLines: 10,
                             style:
-                                TextStyle(fontSize: 20, color: Colors.black54)),
+                                TextStyle(fontSize: 18, color: Colors.black54)),
                         SizedBox(
                           height: 10,
                         ),
                         Text('Logout Location :',
-                            style: TextStyle(fontSize: 22)),
+                            style: TextStyle(fontSize: 18)),
                         SizedBox(height: 5),
                         Text('Logout Address',
                             maxLines: 10,
                             style:
-                                TextStyle(fontSize: 20, color: Colors.black54)),
+                                TextStyle(fontSize: 18, color: Colors.black54)),
                       ],
                     ),
                   ),
@@ -109,11 +108,11 @@ class LoginSummaryScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       Text('Total Login Hours :',
-                          style: TextStyle(fontSize: 22)),
+                          style: TextStyle(fontSize: 18)),
                       SizedBox(width: 5),
                       Text('12 hours 30 mins',
                           style:
-                              TextStyle(fontSize: 20, color: Colors.black54)),
+                              TextStyle(fontSize: 18, color: Colors.black54)),
                     ],
                   ),
                 ),

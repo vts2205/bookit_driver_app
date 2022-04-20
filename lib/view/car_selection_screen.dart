@@ -29,7 +29,7 @@ class CarSelectionScreen extends StatelessWidget {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 60,
+                    height: 50,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: blue.withOpacity(0.2)),
@@ -87,11 +87,11 @@ class CarSelectionScreen extends StatelessWidget {
                   const SizedBox(height: 20),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 60,
+                    height: 50,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: blue.withOpacity(0.2)),
-                    child:const Center(
+                    child: const Center(
                       child: Text('Select Your Package',
                           style: TextStyle(fontSize: 20)),
                     ),
@@ -171,7 +171,7 @@ class CarSelectionScreen extends StatelessWidget {
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width,
-                        height: 60,
+                        height: 50,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10)),
                         child: const Center(

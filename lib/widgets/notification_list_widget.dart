@@ -11,9 +11,9 @@ class NotificationWidget extends StatelessWidget {
       child: ListTile(
           title: Text(
             item.text,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 18),
           ),
-          trailing: Text(item.date, style: const TextStyle(fontSize: 20))),
+          trailing: Text(item.date, style: const TextStyle(fontSize: 18))),
     );
   }
 }
