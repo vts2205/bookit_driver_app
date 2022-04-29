@@ -1,5 +1,6 @@
 import 'package:bookit_driver_app/constants/colors.dart';
 import 'package:bookit_driver_app/view/car_selection_screen.dart';
+import 'package:bookit_driver_app/view/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
@@ -17,8 +18,8 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  width: 250,
-                  height: 250,
+                  width: 200,
+                  height: 200,
                   child: Image.asset(
                     'assets/logo/bookitlogo.png',
                     fit: BoxFit.fill,
@@ -82,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                   pinBoxRadius: 5,
                   pinTextStyle: const TextStyle(fontSize: 22.0),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: blue),
                     onPressed: () {
@@ -94,9 +95,21 @@ class LoginScreen extends StatelessWidget {
                       child: const Center(
                         child: Text(
                           'Login',
-                          style: TextStyle(fontSize: 25, color: Colors.white),
+                          style: TextStyle(fontSize: 23, color: Colors.white),
                         ),
                       ),
+                    )),
+                const SizedBox(height: 10),
+                TextButton(
+                    onPressed: () {
+                      Get.to(RegisterScreen());
+                    },
+                    child: Text(
+                      'Don\'t have an account? Register Now',
+                      style: TextStyle(
+                          color: blue,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
                     ))
               ],
             ),
