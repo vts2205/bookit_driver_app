@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bookit_driver_app/constants/colors.dart';
 import 'package:bookit_driver_app/global/global.dart';
 import 'package:bookit_driver_app/mainScreens/main_screen.dart';
-import 'package:bookit_driver_app/view/login_screen.dart';
+import 'package:bookit_driver_app/view/authentication/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class MySplashScreen extends StatefulWidget {

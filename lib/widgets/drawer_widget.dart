@@ -1,5 +1,5 @@
 import 'package:bookit_driver_app/mainScreens/main_screen.dart';
-import 'package:bookit_driver_app/view/login_screen.dart';
+import 'package:bookit_driver_app/view/authentication/login_screen.dart';
 import 'package:bookit_driver_app/view/notification_screen.dart';
 import 'package:bookit_driver_app/view/profile_screen.dart';
 import 'package:bookit_driver_app/view/reports_screen.dart';

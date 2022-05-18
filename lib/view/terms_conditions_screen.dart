@@ -1,5 +1,5 @@
 import 'package:bookit_driver_app/constants/colors.dart';
-import 'package:bookit_driver_app/view/login_screen.dart';
+import 'package:bookit_driver_app/view/authentication/login_screen.dart';
 import 'package:bookit_driver_app/widgets/appbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
