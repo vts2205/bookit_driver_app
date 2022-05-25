@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'package:bookit_driver_app/service/apiservice.dart';
+import 'package:bookit_driver_app/view/authentication/thank_you_screen.dart';
 import 'package:bookit_driver_app/view/camera.dart';
 import 'package:bookit_driver_app/view/authentication/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../constants/colors.dart';
@@ -277,27 +280,41 @@ class _OwnerDocumentScreenState extends State<OwnerDocumentScreen> {
         style: ElevatedButton.styleFrom(primary: green),
         onPressed:
             (aadhaarFront != null && aadhaarBack != null && panCard != null)
-                ? () {
-                    Get.to(LoginScreen());
+                // ? () {
+                //     Get.to(LoginScreen());
+                //   }
+                // : null,
+                ? () async {
+                    Get.dialog(
+                        Dialog(
+                          backgroundColor: blue,
+                          child: Container(
+                            height: 100,
+                            child: SpinKitSpinningLines(
+                              color: Colors.white,
+                              lineWidth: 3,
+                            ),
+                          ),
+                        ),
+                        barrierDismissible: false);
+                    var data = await APIService().uploadOwnerDocuments(
+                        aadhaarFront,
+                        aadhaarBack,
+                        panCard,
+                        passbook,
+                        rentalAgreement1,
+                        rentalAgreement2);
+                    print(data);
+                    if (data["statusCode"] == 1) {
+                      Fluttertoast.showToast(
+                          msg: 'Registered Successfully', fontSize: 18);
+                      Get.offAll(ThankYouScreen());
+                      print('===success===');
+                    } else {
+                      print('===failed===');
+                    }
                   }
                 : null,
-        //         ? () async {
-        //             var data = await APIService().uploadOwnerDocuments(
-        //                 aadhaarFront,
-        //                 aadhaarBack,
-        //                 panCard,
-        //                 passbook,
-        //                 rentalAgreement1,
-        //                 rentalAgreement2);
-        //             print(data);
-        //             if (data["statusCode"] == 1) {
-        //               Get.to(LoginScreen());
-        //               print('===success===');
-        //             } else {
-        //               print('===failed===');
-        //             }
-        //           }
-        //         : null,
         // onPressed: () {
         //   Get.to(LoginScreen());
         // },
@@ -322,6 +339,7 @@ class _OwnerDocumentScreenState extends State<OwnerDocumentScreen> {
         children: [
           TextButton.icon(
               onPressed: () {
+                Get.back();
                 pickImage(0);
               },
               icon: Icon(
@@ -336,6 +354,7 @@ class _OwnerDocumentScreenState extends State<OwnerDocumentScreen> {
               )),
           TextButton.icon(
               onPressed: () {
+                Get.back();
                 pickImage(1);
               },
               icon: Icon(

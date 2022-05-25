@@ -34,6 +34,7 @@ class APIService {
 
   Future uploadCarDocuments(File? imagefile1, imagefile2, imagefile3,
       imagefile4, imagefile5, imagefile6) async {
+    var driverId = box.read('driverId');
     var completeUrl = APIConstants.baseUrl + APIConstants.carDocuments;
     var request = http.MultipartRequest('POST', Uri.parse(completeUrl));
     http.MultipartFile multipartFile1 =
@@ -46,18 +47,19 @@ class APIService {
         await http.MultipartFile.fromPath("rcBack", imagefile4?.path ?? '');
     http.MultipartFile multipartFile5 =
         await http.MultipartFile.fromPath("insurance", imagefile5?.path ?? '');
-    if (imagefile6?.path ?? ''.isNotEmpty) {
-      http.MultipartFile multipartFile6 =
-          await http.MultipartFile.fromPath("fc", imagefile6?.path ?? '');
-      request.files.add(multipartFile6);
+    if (imagefile6?.path != null) {
+      if (imagefile6?.path.isNotEmpty) {
+        http.MultipartFile multipartFile6 =
+            await http.MultipartFile.fromPath("fc", imagefile6?.path ?? '');
+        request.files.add(multipartFile6);
+      }
     }
-    request.fields["driverId"] = "driver_30";
+    request.fields["driverId"] = '$driverId';
     request.files.add(multipartFile1);
     request.files.add(multipartFile2);
     request.files.add(multipartFile3);
     request.files.add(multipartFile4);
     request.files.add(multipartFile5);
-
     var res = await request.send();
     String result = await res.stream.bytesToString();
     print(result);
@@ -69,6 +71,7 @@ class APIService {
 
   Future uploadDriverDocuments(
       File? imagefile1, imagefile2, imagefile3, imagefile4, imagefile5) async {
+    var driverId = box.read('driverId');
     var completeUrl = APIConstants.baseUrl + APIConstants.driverDocuments;
     var request = http.MultipartRequest('POST', Uri.parse(completeUrl));
     http.MultipartFile multipartFile1 = await http.MultipartFile.fromPath(
@@ -81,7 +84,7 @@ class APIService {
         "licenseFront", imagefile4?.path ?? '');
     http.MultipartFile multipartFile5 = await http.MultipartFile.fromPath(
         "licenseBack", imagefile5?.path ?? '');
-    request.fields["driverId"] = "driver_30";
+    request.fields["driverId"] = '$driverId';
     request.files.add(multipartFile1);
     request.files.add(multipartFile2);
     request.files.add(multipartFile3);
@@ -99,6 +102,7 @@ class APIService {
 
   Future uploadOwnerDocuments(File? imagefile1, imagefile2, imagefile3,
       imagefile4, imagefile5, imagefile6) async {
+    var driverId = box.read('driverId');
     var completeUrl = APIConstants.baseUrl + APIConstants.ownerDocuments;
     var request = http.MultipartRequest('POST', Uri.parse(completeUrl));
     http.MultipartFile multipartFile1 = await http.MultipartFile.fromPath(
@@ -107,21 +111,24 @@ class APIService {
         await http.MultipartFile.fromPath("aadharBack", imagefile2?.path ?? '');
     http.MultipartFile multipartFile3 =
         await http.MultipartFile.fromPath("panCard", imagefile3?.path ?? '');
-    if (imagefile4?.path ??
-        ''.isNotEmpty && imagefile5?.path ??
-        ''.isNotEmpty && imagefile6?.path ??
-        ''.isNotEmpty) {
-      http.MultipartFile multipartFile4 =
-          await http.MultipartFile.fromPath("passbook", imagefile4?.path ?? '');
-      request.files.add(multipartFile4);
-      http.MultipartFile multipartFile5 = await http.MultipartFile.fromPath(
-          "rentalAgreement1", imagefile5?.path ?? '');
-      request.files.add(multipartFile5);
-      http.MultipartFile multipartFile6 = await http.MultipartFile.fromPath(
-          "rentalAgreement2", imagefile6?.path ?? '');
-      request.files.add(multipartFile6);
+    if (imagefile4?.path != null &&
+        imagefile5?.path != null &&
+        imagefile6?.path != null) {
+      if (imagefile4?.path.isNotEmpty &&
+          imagefile5?.path.isNotEmpty &&
+          imagefile6?.path.isNotEmpty) {
+        http.MultipartFile multipartFile4 = await http.MultipartFile.fromPath(
+            "passbook", imagefile4?.path ?? '');
+        request.files.add(multipartFile4);
+        http.MultipartFile multipartFile5 = await http.MultipartFile.fromPath(
+            "rentalAgreement1", imagefile5?.path ?? '');
+        request.files.add(multipartFile5);
+        http.MultipartFile multipartFile6 = await http.MultipartFile.fromPath(
+            "rentalAgreement2", imagefile6?.path ?? '');
+        request.files.add(multipartFile6);
+      }
     }
-    request.fields["driverId"] = "driver_30";
+    request.fields["driverId"] = '$driverId';
     request.files.add(multipartFile1);
     request.files.add(multipartFile2);
     request.files.add(multipartFile3);

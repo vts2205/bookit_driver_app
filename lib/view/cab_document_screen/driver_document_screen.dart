@@ -6,6 +6,7 @@ import 'package:bookit_driver_app/view/camera.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -121,9 +122,9 @@ class _DriverDocumentScreenState extends State<DriverDocumentScreen> {
               const SizedBox(height: 20),
               buildFileUploadButton('Profile Photo', 1),
               const SizedBox(height: 20),
-              buildFileUploadButton('Licence front', 2),
+              buildFileUploadButton('License front', 2),
               const SizedBox(height: 20),
-              buildFileUploadButton('Licence back', 3),
+              buildFileUploadButton('License back', 3),
               const SizedBox(height: 20),
               buildFileUploadButton('Aadhaar front', 4),
               const SizedBox(height: 20),
@@ -255,26 +256,38 @@ class _DriverDocumentScreenState extends State<DriverDocumentScreen> {
                 licenseBack != null &&
                 aadhaarFront != null &&
                 aadhaarBack != null)
-            ? () {
-                Get.to(OwnerDocumentScreen());
+            // ? () {
+            //     Get.to(OwnerDocumentScreen());
+            //   }
+            // : null,
+            ? () async {
+                Get.dialog(
+                    Dialog(
+                      backgroundColor: blue,
+                      child: Container(
+                        height: 100,
+                        child: SpinKitSpinningLines(
+                          color: Colors.white,
+                          lineWidth: 3,
+                        ),
+                      ),
+                    ),
+                    barrierDismissible: false);
+                var data = await APIService().uploadDriverDocuments(
+                    profileImage,
+                    licenseFront,
+                    licenseBack,
+                    aadhaarFront,
+                    aadhaarBack);
+                print(data);
+                if (data["statusCode"] == 1) {
+                  Get.offAll(OwnerDocumentScreen());
+                  print('===success===');
+                } else {
+                  print('===failed===');
+                }
               }
             : null,
-        //     ? () async {
-        //         var data = await APIService().uploadDriverDocuments(
-        //             profileImage,
-        //             licenseFront,
-        //             licenseBack,
-        //             aadhaarFront,
-        //             aadhaarBack);
-        //         print(data);
-        //         if (data["statusCode"] == 1) {
-        //           Get.to(OwnerDocumentScreen());
-        //           print('===success===');
-        //         } else {
-        //           print('===failed===');
-        //         }
-        //       }
-        //     : null,
         // onPressed: () {
         //   Get.to(OwnerDocumentScreen());
         // },
@@ -299,6 +312,7 @@ class _DriverDocumentScreenState extends State<DriverDocumentScreen> {
         children: [
           TextButton.icon(
               onPressed: () {
+                Get.back();
                 pickImage(0);
               },
               icon: Icon(
@@ -313,6 +327,7 @@ class _DriverDocumentScreenState extends State<DriverDocumentScreen> {
               )),
           TextButton.icon(
               onPressed: () {
+                Get.back();
                 pickImage(1);
               },
               icon: Icon(

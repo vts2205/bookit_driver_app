@@ -3,9 +3,13 @@ import 'dart:io';
 import 'package:bookit_driver_app/service/apiservice.dart';
 import 'package:bookit_driver_app/view/cab_document_screen/driver_document_screen.dart';
 import 'package:bookit_driver_app/view/camera.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -128,7 +132,7 @@ class _CarDocumentScreenState extends State<CarDocumentScreen> {
                     fontSize: 20, fontWeight: FontWeight.bold, color: blue),
               ),
               const SizedBox(height: 20),
-              buildFileUploadButton('Front image', 1),
+              buildFileUploadButton('Car Front image', 1),
               const SizedBox(height: 20),
               buildFileUploadButton('Chase number Image', 2),
               const SizedBox(height: 20),
@@ -274,30 +278,106 @@ class _CarDocumentScreenState extends State<CarDocumentScreen> {
   buildSubmitButton() {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(primary: green),
+        // onPressed: () {
+        //   final databaseReference = FirebaseDatabase.instance.reference();
+        //   databaseReference
+        //       .child("flutterDevsTeam1")
+        //       .set({'name': 'Deepak Nishad', 'description': 'Team Lead'});
+        //   databaseReference.once().then((DataSnapshot snapshot) {
+        //     print('Data : ${snapshot.value}');
+        //   });
+        // },
         onPressed: (frontImage != null &&
                 chaseNumberImage != null &&
                 rcFront != null &&
                 rcBack != null &&
                 insurance != null)
-            ? () {
-                Get.to(DriverDocumentScreen());
+            // ? () {
+            //     Get.to(DriverDocumentScreen());
+            //   }
+            // : null,
+            ? () async {
+                //firebase
+                // if (imageuser != null) {
+
+                // var urlList = [];
+                // var imagelist = [];
+                // imagelist.add(frontImage);
+                // imagelist.add(chaseNumberImage);
+                // imagelist.add(rcFront);
+                // imagelist.add(rcBack);
+                // imagelist.add(insurance);
+                // imagelist.add(fcCopy);
+                // imagelist.forEach((element) async {
+                //   var timestamp =
+                //       DateTime.now().millisecondsSinceEpoch.toString();
+                //   final Reference storageRef = FirebaseStorage.instance
+                //       .ref()
+                //       .child('${'driver_1'}-$timestamp.jpg');
+                //
+                //   final taskSnapshot = await storageRef.putFile(element!);
+                //   var url = await taskSnapshot.ref.getDownloadURL();
+                //   urlList.add(url);
+                // });
+                // await FirebaseFirestore.instance
+                //     .collection('users')
+                //     .doc('hjdhjhjd')
+                //     .set({
+                //   'username': 'username',
+                //   'email': 'email',
+                //   'laundryBagNo': 'laundryBagNo',
+                //   'image_url': 'url',
+                //   'userId': 'userCredential.user.uid' //this_one
+                // });
+
+                // var databaseReference = FirebaseDatabase.instance.reference();
+                // databaseReference
+                //     .child("flutterDevsTeam1")
+                //     .set({'name': 'Deepak Nishad', 'description': 'Team Lead'});
+
+                // var documentReference = FirebaseFirestore.instance
+                //     .collection('data')
+                //     .doc('driver_1');
+                // await FirebaseFirestore.instance
+                //     .runTransaction((transaction) async {
+                //   transaction.update(documentReference, {
+                //     'frontimage': 'urlList[0]',
+                //     'chaseNumberImage': 'urlList[1]',
+                //     'rcFront': 'urlList[2]',
+                //     'rcBack': ' urlList[3]',
+                //     'insurance': 'urlList[4]',
+                //     'fcCopy': ' urlList[5]',
+                //   });
+                // });
+                //   }
+                // : null,
+
+                //api
+                Get.dialog(
+                    Dialog(
+                      backgroundColor: blue,
+                      child: Container(
+                        height: 100,
+                        child: SpinKitSpinningLines(
+                          color: Colors.white,
+                          lineWidth: 3,
+                        ),
+                      ),
+                    ),
+                    barrierDismissible: false);
+                var data = await APIService().uploadCarDocuments(frontImage,
+                    chaseNumberImage, rcFront, rcBack, insurance, fcCopy);
+                print(data);
+                if (data["statusCode"] == 1) {
+                  Get.offAll(DriverDocumentScreen());
+                  print('===success===');
+                } else {
+                  print('===failed===');
+                }
               }
             : null,
-        //     ? () async {
-        //         var data = await APIService().uploadCarDocuments(frontImage,
-        //             chaseNumberImage, rcFront, rcBack, insurance, fcCopy);
-        //         print(data);
-        //         if (data["statusCode"] == 1) {
-        //           Get.to(DriverDocumentScreen());
-        //           print('===success===');
-        //         } else {
-        //           print('===failed===');
-        //         }
-        //       }
-        //     : null,
-        // onPressed:
-        // {
-        //   Get.to(DriverDocumentScreen());
+        // onPressed: () {
+        //
         // },
         child: Container(
           width: double.infinity,
@@ -320,6 +400,7 @@ class _CarDocumentScreenState extends State<CarDocumentScreen> {
         children: [
           TextButton.icon(
               onPressed: () {
+                Get.back();
                 pickImage(0);
               },
               icon: Icon(
@@ -334,6 +415,7 @@ class _CarDocumentScreenState extends State<CarDocumentScreen> {
               )),
           TextButton.icon(
               onPressed: () {
+                Get.back();
                 pickImage(1);
               },
               icon: Icon(

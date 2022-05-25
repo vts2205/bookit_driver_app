@@ -23,19 +23,19 @@ class _TakePhotoState extends State<TakePhoto> {
   Future<void> _getAvailableCameras() async {
     _availableCameras = await availableCameras();
     await _initCamera(_availableCameras!.firstWhere((description) =>
-        description.lensDirection == CameraLensDirection.front));
+        description.lensDirection == CameraLensDirection.back));
   }
 
   void _toggleCameraLens() {
     // get current lens direction (front / rear)
     final lensDirection = _controller.description.lensDirection;
     CameraDescription newDescription;
-    if (lensDirection == CameraLensDirection.front) {
-      newDescription = _availableCameras!.firstWhere((description) =>
-          description.lensDirection == CameraLensDirection.back);
-    } else {
+    if (lensDirection == CameraLensDirection.back) {
       newDescription = _availableCameras!.firstWhere((description) =>
           description.lensDirection == CameraLensDirection.front);
+    } else {
+      newDescription = _availableCameras!.firstWhere((description) =>
+          description.lensDirection == CameraLensDirection.back);
     }
     _initCamera(newDescription);
   }
@@ -102,7 +102,7 @@ class _TakePhotoState extends State<TakePhoto> {
                     },
                   ),
                   Positioned(
-                      bottom: 20,
+                      bottom: 50,
                       left: 0,
                       right: 0,
                       child: IconButton(
