@@ -14,6 +14,7 @@ import '../assistants/black_theme_google_map.dart';
 import '../widgets/progress_dialog.dart';
 
 
+// ignore: must_be_immutable
 class NewTripScreen extends StatefulWidget
 {
   UserRideRequestInformation? userRideRequestDetails;
@@ -83,7 +84,7 @@ class _NewTripScreenState extends State<NewTripScreen>
     print(directionDetailsInfo!.e_points);
 
     PolylinePoints pPoints = PolylinePoints();
-    List<PointLatLng> decodedPolyLinePointsResultList = pPoints.decodePolyline(directionDetailsInfo!.e_points!);
+    List<PointLatLng> decodedPolyLinePointsResultList = pPoints.decodePolyline(directionDetailsInfo.e_points!);
 
     polyLinePositionCoordinates.clear();
 
@@ -200,7 +201,6 @@ class _NewTripScreenState extends State<NewTripScreen>
 
   getDriversLocationUpdatesAtRealTime()
   {
-    LatLng oldLatLng = LatLng(0, 0);
 
     streamSubscriptionDriverLivePosition = Geolocator.getPositionStream()
         .listen((Position position)
@@ -228,7 +228,6 @@ class _NewTripScreenState extends State<NewTripScreen>
         setOfMarkers.add(animatingMarker);
       });
 
-      oldLatLng = latLngLiveDriverPosition;
       updateDurationTimeAtRealTime();
 
       //updating driver location at real time in Database

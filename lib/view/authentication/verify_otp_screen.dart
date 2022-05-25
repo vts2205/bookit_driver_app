@@ -24,7 +24,6 @@ class _VerifyOTPScreenState extends State<VerifyOTPScreen> with CodeAutoFill {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     listenOtp();
   }

@@ -1,7 +1,6 @@
 import 'package:bookit_driver_app/constants/colors.dart';
 import 'package:bookit_driver_app/service/apiservice.dart';
 import 'package:bookit_driver_app/view/cab_document_screen/car_documents_screen.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -21,6 +20,48 @@ class RegisterScreen extends StatelessWidget {
   final license = TextEditingController();
   final date = TextEditingController();
   final box = GetStorage();
+
+  static const districtList = [
+    "Ariyalur",
+    "Chengalpattu",
+    "Chennai",
+    "Coimbatore",
+    "Cuddalore",
+    "Dharmapuri",
+    "Dindigul",
+    "Erode",
+    "Kallakurichi",
+    "Kanchipuram",
+    "Kanyakumari",
+    "Karur",
+    "Krishnagiri",
+    "Madurai",
+    "Mayiladuthurai",
+    "Nagapattinam",
+    "Namakkal",
+    "Nilgiris",
+    "Perambalur",
+    "Pondicherry",
+    "Pudukkottai",
+    "Ramanathapuram",
+    "Ranipet",
+    "Salem",
+    "Sivagangai",
+    "Tenkasi",
+    "Thanjavur",
+    "Theni",
+    "Thoothukudi",
+    "Tiruchirappalli",
+    "Tirunelveli",
+    "Tirupattur",
+    "Tiruppur",
+    "Tiruvallur",
+    "Tiruvannamalai",
+    "Tiruvarur",
+    "Vellore",
+    "Viluppuram",
+    "Virudhunagar"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -69,21 +110,52 @@ class RegisterScreen extends StatelessWidget {
                       return null;
                   }, TextInputType.number),
                   const SizedBox(height: 30),
-                  buildTextFormField('Enter your district', location, (value) {
-                    if (value.isEmpty) {
-                      return 'Enter a valid district';
-                    }
-                    return null;
-                  }, TextInputType.text),
-                  const SizedBox(height: 30),
-                  buildTextFormField('Enter your license number', license,
-                      (value) {
-                    if (value.isEmpty) {
-                      return 'Enter a valid license number';
-                    }
-                    return null;
-                  }, TextInputType.text),
-                  const SizedBox(height: 30),
+                  // TypeAheadFormField(
+                  //     textFieldConfiguration: TextFieldConfiguration(
+                  //         controller: location,
+                  //         decoration: InputDecoration(
+                  //           hintText: 'Enter your district',
+                  //           contentPadding: EdgeInsets.all(10),
+                  //           border: OutlineInputBorder(
+                  //               borderSide: BorderSide(color: Colors.black)),
+                  //           focusedBorder: OutlineInputBorder(
+                  //               borderSide: BorderSide(color: green, width: 2)),
+                  //         )),
+                  //     suggestionsCallback: (pattern) {
+                  //       return districtList.where((item) =>
+                  //           item.toLowerCase().contains(pattern.toLowerCase()));
+                  //     },
+                  //     onSuggestionSelected: (String val) {
+                  //       this.location.text = val;
+                  //       print(val);
+                  //     },
+                  //     itemBuilder: (_, String item) {
+                  //       return ListTile(
+                  //         title: Text(item),
+                  //       );
+                  //     },
+                  //     getImmediateSuggestions: true,
+                  //     hideSuggestionsOnKeyboardHide: false,
+                  //     hideOnEmpty: false,
+                  //     noItemsFoundBuilder: (context) => Padding(
+                  //           padding: const EdgeInsets.all(8),
+                  //           child: Text('No item found'),
+                  //         ),
+                  //     validator: (value) {
+                  //       if (value!.isEmpty) {
+                  //         return 'Enter a valid district';
+                  //       }
+                  //       return null;
+                  //     }),
+                  // const SizedBox(height: 30),
+                  // buildTextFormField('Enter your license number', license,
+                  //     (value) {
+                  //   if (value.isEmpty) {
+                  //     return 'Enter a valid license number';
+                  //   }
+                  //   return null;
+                  // }, TextInputType.text),
+                  // const SizedBox(height: 30),
                   buildTextFormField('Enter your license expiry date', date,
                       (value) {
                     if (value.isEmpty) {
@@ -146,11 +218,13 @@ class RegisterScreen extends StatelessWidget {
                 license.text,
                 date.text);
             print(data['body']['Token']);
-            if (data['statusCode'] == 1) {
+            if (data['message'] == 'Driver Created Successfully') {
               box.write('driverId', data['body']['driverId']);
               Fluttertoast.showToast(msg: data['message'], fontSize: 18);
               Get.offAll(CarDocumentScreen());
               print('====success====');
+            } else if (data['message'] == 'Driver Already Exists') {
+              Fluttertoast.showToast(msg: data['message'], fontSize: 18);
             } else {
               print('====failed====');
             }

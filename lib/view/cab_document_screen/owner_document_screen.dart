@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:bookit_driver_app/service/apiservice.dart';
 import 'package:bookit_driver_app/view/authentication/thank_you_screen.dart';
 import 'package:bookit_driver_app/view/camera.dart';
-import 'package:bookit_driver_app/view/authentication/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

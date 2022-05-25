@@ -1,9 +1,7 @@
 import 'package:bookit_driver_app/constants/colors.dart';
-import 'package:bookit_driver_app/mainScreens/main_screen.dart';
 import 'package:bookit_driver_app/view/authentication/verify_otp_screen.dart';
 import 'package:bookit_driver_app/view/authentication/register_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 

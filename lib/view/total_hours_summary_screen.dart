@@ -1,7 +1,6 @@
 import 'package:bookit_driver_app/constants/colors.dart';
 import 'package:bookit_driver_app/widgets/appbar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class TotalHoursSummaryScreen extends StatefulWidget {
   const TotalHoursSummaryScreen({Key? key}) : super(key: key);

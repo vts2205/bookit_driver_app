@@ -249,7 +249,7 @@ class _HomeTabPageState extends State<HomeTabPage> {
         .child("drivers")
         .child(currentFirebaseUser!.uid)
         .child("newRideStatus");
-    ref!.onDisconnect();
+    ref.onDisconnect();
     ref.remove();
     ref = null;
 
