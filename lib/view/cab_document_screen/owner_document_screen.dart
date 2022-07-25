@@ -8,6 +8,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../constants/colors.dart';
 
 class OwnerDocumentScreen extends StatefulWidget {
@@ -115,23 +116,46 @@ class _OwnerDocumentScreenState extends State<OwnerDocumentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Padding(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          'Owner Documents',
+          style:
+              TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: blue),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                openWhatsappChat();
+              },
+              icon: Image.asset('assets/icons/whatsapp.png')),
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () {
+                launch("tel://+918110800811");
+              },
+              child: Image.asset(
+                'assets/icons/callcenter.png',
+                width: 40,
+              ),
+            ),
+          )
+        ],
+      ),
+      body: Padding(
         padding: EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text(
-                'Owner Documents',
-                style: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.bold, color: blue),
-              ),
               const SizedBox(height: 20),
               buildFileUploadButton('Aadhaar front', 1),
               const SizedBox(height: 20),
               buildFileUploadButton('Aadhaar back', 2),
               const SizedBox(height: 20),
-              buildFileUploadButton('Pan', 3),
+              buildFileUploadButton('PanCard', 3),
               const SizedBox(height: 20),
               buildFileUploadButton('Passbook (optional)', 4),
               const SizedBox(height: 20),
@@ -143,7 +167,7 @@ class _OwnerDocumentScreenState extends State<OwnerDocumentScreen> {
             ],
           ),
         ),
-      )),
+      ),
     );
   }
 
@@ -369,5 +393,10 @@ class _OwnerDocumentScreenState extends State<OwnerDocumentScreen> {
         ],
       ),
     ));
+  }
+
+  void openWhatsappChat() async {
+    var url = 'https://wa.me/+918110800811';
+    await launch(url);
   }
 }

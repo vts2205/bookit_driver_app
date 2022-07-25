@@ -24,7 +24,7 @@ class TermsConditionsScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10), color: Colors.white),
             ),
             Positioned(
-                bottom: 10,
+                bottom: 100,
                 left: 180,
                 right: 180,
                 child: ElevatedButton(

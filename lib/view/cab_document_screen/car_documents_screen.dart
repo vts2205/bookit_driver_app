@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../constants/colors.dart';
 
 class CarDocumentScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class CarDocumentScreen extends StatefulWidget {
 }
 
 class _CarDocumentScreenState extends State<CarDocumentScreen> {
-  File? image;
+  //File? image;
   int clickedDocType = 0;
 
   File? frontImage;
@@ -114,17 +115,40 @@ class _CarDocumentScreenState extends State<CarDocumentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Padding(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          'Car Documents',
+          style:
+              TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: blue),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                openWhatsappChat();
+              },
+              icon: Image.asset('assets/icons/whatsapp.png')),
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () {
+                launch("tel://+918110800811");
+              },
+              child: Image.asset(
+                'assets/icons/callcenter.png',
+                width: 40,
+              ),
+            ),
+          )
+        ],
+      ),
+      body: Padding(
         padding: EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text(
-                'Car Documents',
-                style: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.bold, color: blue),
-              ),
               const SizedBox(height: 20),
               buildFileUploadButton('Car Front image', 1),
               const SizedBox(height: 20),
@@ -142,7 +166,7 @@ class _CarDocumentScreenState extends State<CarDocumentScreen> {
             ],
           ),
         ),
-      )),
+      ),
     );
   }
 
@@ -425,5 +449,10 @@ class _CarDocumentScreenState extends State<CarDocumentScreen> {
         ],
       ),
     ));
+  }
+
+  void openWhatsappChat() async {
+    var url = 'https://wa.me/+918110800811';
+    await launch(url);
   }
 }

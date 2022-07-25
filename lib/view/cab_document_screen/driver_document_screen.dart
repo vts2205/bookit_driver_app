@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../constants/colors.dart';
 
 class DriverDocumentScreen extends StatefulWidget {
@@ -105,17 +106,40 @@ class _DriverDocumentScreenState extends State<DriverDocumentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Padding(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        title: Text(
+          'Driver Documents',
+          style:
+              TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: blue),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                openWhatsappChat();
+              },
+              icon: Image.asset('assets/icons/whatsapp.png')),
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: GestureDetector(
+              onTap: () {
+                launch("tel://+918110800811");
+              },
+              child: Image.asset(
+                'assets/icons/callcenter.png',
+                width: 40,
+              ),
+            ),
+          )
+        ],
+      ),
+      body: Padding(
         padding: EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Text(
-                'Driver Documents',
-                style: TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.bold, color: blue),
-              ),
               const SizedBox(height: 20),
               buildFileUploadButton('Profile Photo', 1),
               const SizedBox(height: 20),
@@ -131,7 +155,7 @@ class _DriverDocumentScreenState extends State<DriverDocumentScreen> {
             ],
           ),
         ),
-      )),
+      ),
     );
   }
 
@@ -340,5 +364,10 @@ class _DriverDocumentScreenState extends State<DriverDocumentScreen> {
         ],
       ),
     ));
+  }
+
+  void openWhatsappChat() async {
+    var url = 'https://wa.me/+918110800811';
+    await launch(url);
   }
 }

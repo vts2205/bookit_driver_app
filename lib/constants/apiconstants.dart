@@ -5,4 +5,8 @@ class APIConstants {
   static String carDocuments = 'carDocuments';
   static String driverDocuments = 'driverDocuments';
   static String ownerDocuments = 'ownerDocument';
+  static String getProfile = 'getprofiledetails';
+  static String allTripHistory = 'tripHistory';
+  static String completedTripHistory = 'completedTrip';
+  static String cancelledTripHistory = 'cancelledTrip';
 }

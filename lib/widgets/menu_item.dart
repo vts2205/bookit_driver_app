@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class MenuItem extends StatelessWidget {
+class MenuItems extends StatelessWidget {
   final String title;
   final IconData icon;
   final Color color;
   final double size;
   final VoidCallback onTap;
-  const MenuItem(
+  const MenuItems(
       {Key? key,
       required this.title,
       required this.icon,

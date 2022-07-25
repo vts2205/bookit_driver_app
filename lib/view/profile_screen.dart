@@ -1,6 +1,9 @@
 import 'package:bookit_driver_app/constants/colors.dart';
+import 'package:bookit_driver_app/controllers/profile_controller.dart';
 import 'package:bookit_driver_app/mainScreens/main_screen.dart';
+import 'package:bookit_driver_app/models/get_profile_model.dart';
 import 'package:bookit_driver_app/models/language_info.dart';
+import 'package:bookit_driver_app/service/apiservice.dart';
 import 'package:bookit_driver_app/widgets/appbar_widget.dart';
 import 'package:bookit_driver_app/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +17,27 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  var controller = Get.put(ProfileController());
+
+  GetProfileModel? getProfileModel;
+
+  var isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    getProfileModel = await APIService().fetchProfile();
+    if (getProfileModel != null) {
+      setState(() {
+        isLoading = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,14 +58,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const SizedBox(height: 20),
           Row(
-            children: const [
+            children: [
               Text(
                 'ID Number :',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(width: 10),
               Text(
-                'ABCD1234',
+                '${getProfileModel?.body?.getprofiledetails?[0].driverId}',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
@@ -53,6 +77,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const SizedBox(height: 5),
           TextField(
+            controller: controller.nameController,
             cursorColor: green,
             decoration: InputDecoration(
                 contentPadding: const EdgeInsets.all(10),
@@ -70,6 +95,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const SizedBox(height: 5),
           TextField(
+            controller: controller.phoneController,
             cursorColor: green,
             decoration: InputDecoration(
                 contentPadding: const EdgeInsets.all(10),
@@ -87,6 +113,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const SizedBox(height: 5),
           TextField(
+            controller: controller.ownerPhoneController,
             cursorColor: green,
             decoration: InputDecoration(
                 contentPadding: const EdgeInsets.all(10),
@@ -114,39 +141,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const SizedBox(height: 20),
           Row(
-            children: const [
+            children: [
               Text(
                 'Licence Number : ',
                 style: TextStyle(fontSize: 18),
               ),
               Text(
-                'TN99AB12345678910',
+                '${getProfileModel?.body?.getprofiledetails?[0].licenseNumber}',
                 style: TextStyle(fontSize: 18, color: Colors.black54),
               ),
             ],
           ),
           const SizedBox(height: 20),
           Row(
-            children: const [
+            children: [
               Text(
                 'Expiry Date : ',
                 style: TextStyle(fontSize: 18),
               ),
               Text(
-                '31/05/2045',
+                '${getProfileModel?.body?.getprofiledetails?[0].expiryDate}',
                 style: TextStyle(fontSize: 18, color: Colors.black54),
               ),
             ],
           ),
           const SizedBox(height: 20),
           Row(
-            children: const [
+            children: [
               Text(
                 'Referral Code : ',
                 style: TextStyle(fontSize: 18),
               ),
               Text(
-                'ABCD1234',
+                '${getProfileModel?.body?.getprofiledetails?[0].referral}',
                 style: TextStyle(fontSize: 18, color: Colors.black54),
               ),
             ],
